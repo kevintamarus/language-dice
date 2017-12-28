@@ -25,14 +25,37 @@ export default class Main extends React.Component {
 
   start = () => {
     const currentQuestion = this.state.remainingQuestions[0];
-    console.log(typeof question, 'one question')
-    this.setState({currentQuestion})
+    this.setState({currentQuestion});
     this.setState({showStartButton: false});
   }
 
+  randomQuestion = () => {
+    const newPrevious = this.state.previousQuestions.concat([this.state.currentQuestion]);
+    if(!this.state.remainingQuestions.length) {
+      const randomized = Randomizer.randomizeArray(this.state.questions);
+      this.setState({remainingQuestions: randomized});
+      console.log(randomized, 'randomized')
+      console.log(this.state.remainingQuestions, 'renew')
+      setTimeout( () => {
+        const currentQuestion = this.state.remainingQuestions[0];
+        this.setState({currentQuestion});
+      },200)
+      const newRemaining = this.state.remainingQuestions.slice(1);
+      this.setState({remainingQuestions: newRemaining});
+      this.setState({previousQuestions: newPrevious});
+    } else {
+      const currentQuestion = this.state.remainingQuestions[0];
+      const newRemaining = this.state.remainingQuestions.slice(1);
+      this.setState({remainingQuestions: newRemaining});
+      this.setState({previousQuestions: newPrevious});
+      this.setState({currentQuestion});
+    }
+  }
+
   render() {
-    console.log(this.state.questions, 'questions')
     console.log(this.state.remainingQuestions, 'remaining questions')
+    console.log(this.state.previousQuestions, 'previous questions')
+    console.log(this.state.currentQuestion, 'current')
     return (
       <View style={styles.container}>
         {
@@ -43,7 +66,7 @@ export default class Main extends React.Component {
               backgroundColor="green"
               icon={{name: 'forward'}}
               title='Start'
-              onPress={() => this.start()}
+              onPress={this.start}
             />
           </View>
           :
@@ -53,16 +76,16 @@ export default class Main extends React.Component {
               raised
               backgroundColor="green"
               icon={{name: 'autorenew'}}
-              title='Next Question'
-              onPress={() => Actions.main()}
+              title='Next Random Question'
+              onPress={this.randomQuestion}
             />
-            <Button
+            {this.state.previousQuestions.length ? <Button
               raised
               backgroundColor="red"
               icon={{name: 'replay'}}
               title='Previous Question'
               onPress={() => console.log('previous question pressed')}
-            />
+            /> : null}
             <Button
               raised
               backgroundColor="blue"
