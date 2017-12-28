@@ -25,29 +25,24 @@ export default class Main extends React.Component {
 
   start = () => {
     const currentQuestion = this.state.remainingQuestions[0];
+    const newRemaining = this.state.remainingQuestions.slice(1);
     this.setState({currentQuestion});
+    this.setState({remainingQuestions: newRemaining});
     this.setState({showStartButton: false});
   }
 
   randomQuestion = () => {
     const newPrevious = this.state.previousQuestions.concat([this.state.currentQuestion]);
-    if(!this.state.remainingQuestions.length) {
+    this.setState({previousQuestions: newPrevious});
+    if(this.state.remainingQuestions.length === 1) {
+      const currentQuestion = this.state.remainingQuestions[0];
       const randomized = Randomizer.randomizeArray(this.state.questions);
       this.setState({remainingQuestions: randomized});
-      console.log(randomized, 'randomized')
-      console.log(this.state.remainingQuestions, 'renew')
-      setTimeout( () => {
-        const currentQuestion = this.state.remainingQuestions[0];
-        this.setState({currentQuestion});
-      },200)
-      const newRemaining = this.state.remainingQuestions.slice(1);
-      this.setState({remainingQuestions: newRemaining});
-      this.setState({previousQuestions: newPrevious});
+      this.setState({currentQuestion});
     } else {
       const currentQuestion = this.state.remainingQuestions[0];
       const newRemaining = this.state.remainingQuestions.slice(1);
       this.setState({remainingQuestions: newRemaining});
-      this.setState({previousQuestions: newPrevious});
       this.setState({currentQuestion});
     }
   }
@@ -55,7 +50,6 @@ export default class Main extends React.Component {
   render() {
     console.log(this.state.remainingQuestions, 'remaining questions')
     console.log(this.state.previousQuestions, 'previous questions')
-    console.log(this.state.currentQuestion, 'current')
     return (
       <View style={styles.container}>
         {
