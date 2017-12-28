@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import {Button} from 'react-native-elements';
+import {Button, Card} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 import Questions from '../json_files/questions';
 import Randomizer from 'react-randomizer';
@@ -65,7 +65,13 @@ export default class Main extends React.Component {
           </View>
           :
           <View style={styles.container}>
-            <Text>{this.state.currentQuestion.question}</Text>
+            <Card
+              title='Question'
+              image={require('../assets/question_mark.png')}>
+              <Text style={{marginBottom: 10}}>
+              {this.state.currentQuestion.question}
+              </Text>
+            </Card>
             <Button
               raised
               backgroundColor="green"
