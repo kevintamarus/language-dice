@@ -37,8 +37,6 @@ export default class Main extends React.Component {
     const currentQuestion = questions[0];
     const remainingQuestions = questions.slice(1);
     this.setState({questions, remainingQuestions, currentQuestion});
-    // this.setState({remainingQuestions});
-    // this.setState({currentQuestion});
     this.setState({previousQuestions: [currentQuestion]});
   }
 
@@ -110,7 +108,7 @@ export default class Main extends React.Component {
         {this.state.previousQuestions.length > this.state.currentIndex + 1 ? <Button
           raised
           backgroundColor="#66CDAA"
-          icon={{name: 'check'}}
+          icon={{name: 'forward'}}
           title='Next Question'
           onPress={() => this.traverseQuestions('next')}
           onLongPress={this.toggleModalHistory}

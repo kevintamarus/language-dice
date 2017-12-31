@@ -32,13 +32,15 @@ export default class Settings extends React.Component {
           title='Advanced'
           onPress={() => Actions.main({difficulty: 'advanced'})}
         />
-        <Button
-          raised
-          backgroundColor="blue"
-          icon={{name: 'home'}}
-          title='Back to Home'
-          onPress={() => Actions.root()}
-        />
+        <View style={{paddingTop: 30}}>
+          <Button
+            raised
+            backgroundColor="blue"
+            icon={{name: 'home'}}
+            title='Back to Home'
+            onPress={() => Actions.root()}
+          />
+        </View>
       </View>
     )
   }
