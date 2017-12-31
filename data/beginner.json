@@ -73,14 +73,6 @@
   },
   {
     "id": 10,
-    "question": "Qu’aimes-tu faire?",
-    "question_alt": null,
-    "translation": "What do you like to do in your free time?",
-    "translation_alt": null,
-    "difficulty": "beginner"
-  },
-  {
-    "id": 11,
     "question": "Voulez-vous vous retrouver?",
     "question_alt": null,
     "translation": "Do you want to meet again?",
