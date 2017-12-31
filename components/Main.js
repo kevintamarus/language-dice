@@ -13,7 +13,7 @@ export default class Main extends React.Component {
       remainingQuestions: [],
       previousQuestions: [],
       currentQuestion: null,
-      currentNumber: 0,
+      currentIndex: 0,
       currentTranslationAlt: null,
       showStartButton: true,
       showTranslation: false,
@@ -29,7 +29,6 @@ export default class Main extends React.Component {
     const currentQuestion = this.state.remainingQuestions[0];
     const newRemaining = this.state.remainingQuestions.slice(1);
     this.setState({currentQuestion});
-    this.setState({currentNumber: this.state.currentNumber + 1});
     this.setState({remainingQuestions: newRemaining});
     this.setState({showStartButton: false});
   }
@@ -39,16 +38,18 @@ export default class Main extends React.Component {
     this.setState({previousQuestions: newPrevious});
     if(this.state.remainingQuestions.length === 1) {
       const currentQuestion = this.state.remainingQuestions[0];
-      this.setState({currentNumber: this.state.currentNumber + 1});
+      this.setState({currentIndex: newPrevious.length});
       const randomized = Randomizer.randomizeArray(this.state.questions);
       this.setState({remainingQuestions: randomized});
       this.setState({currentQuestion});
+      this.setState({showTranslation: false});
     } else {
       const currentQuestion = this.state.remainingQuestions[0];
-      this.setState({currentNumber: this.state.currentNumber + 1});
+      this.setState({currentIndex: newPrevious.length});
       const newRemaining = this.state.remainingQuestions.slice(1);
       this.setState({remainingQuestions: newRemaining});
       this.setState({currentQuestion});
+      this.setState({showTranslation: false});
     }
   }
 
@@ -59,7 +60,7 @@ export default class Main extends React.Component {
   render() {
     console.log(this.state.remainingQuestions, 'remaining questions')
     console.log(this.state.previousQuestions, 'previous questions')
-    console.log(this.state.showTranslation, 'translation show')
+    console.log(this.state.currentIndex, 'index')
     return (
       <View style={styles.container}>
         {
@@ -78,7 +79,7 @@ export default class Main extends React.Component {
             <TouchableHighlight onPress={this.toggleTranslation}>
               <View>
                 <Card
-                  title={!this.state.showTranslation? `Question #${this.state.currentNumber}` : `Question #${this.state.currentNumber} Translated`}
+                  title={!this.state.showTranslation? `Question #${this.state.currentIndex + 1}` : `Question #${this.state.currentIndex + 1} Translated`}
                   image={require('../assets/question_mark.png')}>
                   { !this.state.showTranslation ? 
                     <Text style={{marginBottom: 10, fontSize: 30, fontWeight: 'bold'}}>
@@ -105,14 +106,14 @@ export default class Main extends React.Component {
               title='Previous Question'
               onPress={() => console.log('previous question pressed')}
             /> : null}
-            <View style={{paddingTop: 50}}>
-            <Button
-              raised
-              backgroundColor="blue"
-              icon={{name: 'home'}}
-              title='Back to Home'
-              onPress={() => Actions.root()}
-            />
+            <View style={{paddingTop: 30}}>
+              <Button
+                raised
+                backgroundColor="blue"
+                icon={{name: 'home'}}
+                title='Back to Home'
+                onPress={() => Actions.root()}
+              />
             </View>
           </View>
         }
