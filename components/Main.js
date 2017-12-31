@@ -50,6 +50,17 @@ export default class Main extends React.Component {
     }
   }
 
+  traverseQuestions = (action) => {
+    let newIndex;
+    if(action === 'previous') {
+      newIndex = this.state.currentIndex - 1;
+    } else if(action === 'next') {
+      newIndex = this.state.currentIndex + 1;
+    }
+    this.setState({currentQuestion: this.state.previousQuestions[newIndex]});
+    this.setState({currentIndex: newIndex});
+  }
+
   toggleTranslation = () => {
     this.setState({showTranslation: !this.state.showTranslation});
   }
@@ -96,12 +107,19 @@ export default class Main extends React.Component {
               title='Next Random Question'
               onPress={this.randomQuestion}
             />
-            {this.state.previousQuestions.length ? <Button
+            {this.state.previousQuestions.length > this.state.currentIndex + 1 ? <Button
+              raised
+              backgroundColor="#66CDAA"
+              icon={{name: 'check'}}
+              title='Next Question'
+              onPress={() => this.traverseQuestions('next')}
+            /> : null}
+            {this.state.currentIndex > 0 ? <Button
               raised
               backgroundColor="red"
               icon={{name: 'replay'}}
               title='Previous Question'
-              onPress={() => console.log('previous question pressed')}
+              onPress={() => this.traverseQuestions('previous')}
             /> : null}
             <View style={{paddingTop: 30}}>
               <Button
