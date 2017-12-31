@@ -2,9 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Button, Card} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
-import Beginner from '../json_files/beginner';
-import Intermediate from '../json_files/intermediate';
-import Advanced from '../json_files/advanced';
+import Beginner from '../data/beginner';
+import Intermediate from '../data/intermediate';
+import Advanced from '../data/advanced';
 import Randomizer from 'react-randomizer';
 import ModalHistory from './ModalHistory';
 
