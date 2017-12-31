@@ -2,7 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Button, Card} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
-import Questions from '../json_files/questions';
+import Beginner from '../json_files/beginner';
+import Intermediate from '../json_files/intermediate';
+import Advanced from '../json_files/advanced';
 import Randomizer from 'react-randomizer';
 import ModalHistory from './ModalHistory';
 
@@ -23,16 +25,16 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
+    let questions;
     if(this.props.difficulty === 'all') {
-
+      questions = Randomizer.randomizeArray(Beginner.concat(Intermediate, Advanced));
     } else if(this.props.difficulty === 'beginner') {
-
+      questions = Randomizer.randomizeArray(Beginner);
     } else if(this.props.difficulty === 'intermediate') {
-
+      questions = Randomizer.randomizeArray(Intermediate);
     } else if(this.props.difficulty === 'advanced') {
-
+      questions = Randomizer.randomizeArray(Advanced);
     }
-    const questions = Randomizer.randomizeArray(Questions);
     this.setState({questions, remainingQuestions: questions});
   }
 
