@@ -1,6 +1,8 @@
 ## Features to Implement
+- Answer suggestions
 - History of past questions
-
+- Dictation of questions
+- Another Language?
 
 ## Blockers
 
