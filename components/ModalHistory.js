@@ -23,7 +23,7 @@ export default class ModalHistory extends React.Component {
               return (
                 <ListItem
                   key={i}
-                  title={question.question}
+                  title={(i + 1) + '  ' + question.question}
                   onPress={() => {
                     this.props.traverseQuestions(i);
                     this.props.toggleModalHistory();

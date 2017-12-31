@@ -23,6 +23,15 @@ export default class Main extends React.Component {
   }
 
   componentDidMount() {
+    if(this.props.difficulty === 'all') {
+
+    } else if(this.props.difficulty === 'beginner') {
+
+    } else if(this.props.difficulty === 'intermediate') {
+
+    } else if(this.props.difficulty === 'advanced') {
+
+    }
     const questions = Randomizer.randomizeArray(Questions);
     this.setState({questions, remainingQuestions: questions});
   }
@@ -74,9 +83,6 @@ export default class Main extends React.Component {
   }
 
   render() {
-    console.log(this.state.remainingQuestions, 'remaining questions')
-    console.log(this.state.previousQuestions, 'previous questions')
-    console.log(this.state.currentIndex, 'index')
     return (
       <View style={styles.container}>
         {
