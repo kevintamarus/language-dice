@@ -50,7 +50,7 @@ export default class Main extends React.Component {
     }
   }
 
-  traverseQuestions = (action) => {
+  traverseQuestions = action => {
     let newIndex;
     if(action === 'previous') {
       newIndex = this.state.currentIndex - 1;
