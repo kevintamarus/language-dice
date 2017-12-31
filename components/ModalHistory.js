@@ -11,7 +11,7 @@ export default class ModalHistory extends React.Component {
         animationType='slide'
         visible={this.props.showModalHistory} 
         onRequestClose={this.props.toggleModalHistory}>
-        <Text style={{marginTop: 30, textAlign: 'center'}}>Questions History</Text>
+        <Text style={{marginTop: 30, marginBottom: 30, fontSize: 20, fontWeight: 'bold', textAlign: 'center'}}>Questions History</Text>
         <Button
           raised
           title="Back"

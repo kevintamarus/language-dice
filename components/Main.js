@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {Button, Card} from 'react-native-elements';
+import {Button, Card, ButtonGroup} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 import Beginner from '../data/beginner';
 import Intermediate from '../data/intermediate';
@@ -56,6 +56,19 @@ export default class Main extends React.Component {
     }
   }
 
+  handleTraversePress = buttonIndex => {
+    const currentIndex = this.state.currentIndex;
+    if(buttonIndex === 0 && currentIndex !== 0) {
+      this.traverseQuestions('previous');
+    }
+    if(buttonIndex === 1) {
+      this.toggleModalHistory();
+    }
+    if(buttonIndex === 2 && currentIndex !== this.state.previousQuestions.length - 1) {
+      this.traverseQuestions('next');
+    }
+  }
+
   traverseQuestions = action => {
     let newIndex;
     if(action === 'previous') {
@@ -80,9 +93,15 @@ export default class Main extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <ButtonGroup
+          buttons={['Previous', 'History', 'Next']}
+          selectedBackgroundColor="blue"
+          onPress={this.handleTraversePress}
+        />
         <TouchableOpacity onPress={this.toggleTranslation}>
           <View>
             <Card
+              containerStyle={{width: 300, height: 300}}
               imageStyle={{width: 100, height: 100}}
               imageWrapperStyle={{alignItems: 'center'}}
               title={!this.state.showTranslation? `Question #${this.state.currentIndex + 1}` : `Question #${this.state.currentIndex + 1} Translated`}
@@ -102,25 +121,9 @@ export default class Main extends React.Component {
           raised
           backgroundColor="green"
           icon={{name: 'autorenew'}}
-          title='Next Random Question'
+          title='Generate Random Question'
           onPress={this.randomQuestion}
         />
-        {this.state.previousQuestions.length > this.state.currentIndex + 1 ? <Button
-          raised
-          backgroundColor="#66CDAA"
-          icon={{name: 'forward'}}
-          title='Next Question'
-          onPress={() => this.traverseQuestions('next')}
-          onLongPress={this.toggleModalHistory}
-        /> : null}
-        {this.state.currentIndex > 0 ? <Button
-          raised
-          backgroundColor="red"
-          icon={{name: 'replay'}}
-          title='Previous Question'
-          onPress={() => this.traverseQuestions('previous')}
-          onLongPress={this.toggleModalHistory}
-        /> : null}
         <View style={{paddingTop: 30}}>
           <Button
             raised
