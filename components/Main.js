@@ -31,25 +31,22 @@ export default class Main extends React.Component {
     this.setState({currentQuestion});
     this.setState({remainingQuestions: newRemaining});
     this.setState({showStartButton: false});
+    this.setState({previousQuestions: [currentQuestion]});
   }
 
   randomQuestion = () => {
-    const newPrevious = this.state.previousQuestions.concat([this.state.currentQuestion]);
+    const newPrevious = this.state.previousQuestions.concat([this.state.remainingQuestions[0]]);
     this.setState({previousQuestions: newPrevious});
+    this.setState({currentIndex: newPrevious.length - 1});
+    const currentQuestion = this.state.remainingQuestions[0];
+    this.setState({currentQuestion});
+    this.setState({showTranslation: false});
     if(this.state.remainingQuestions.length === 1) {
-      const currentQuestion = this.state.remainingQuestions[0];
-      this.setState({currentIndex: newPrevious.length});
       const randomized = Randomizer.randomizeArray(this.state.questions);
       this.setState({remainingQuestions: randomized});
-      this.setState({currentQuestion});
-      this.setState({showTranslation: false});
     } else {
-      const currentQuestion = this.state.remainingQuestions[0];
-      this.setState({currentIndex: newPrevious.length});
       const newRemaining = this.state.remainingQuestions.slice(1);
       this.setState({remainingQuestions: newRemaining});
-      this.setState({currentQuestion});
-      this.setState({showTranslation: false});
     }
   }
 
