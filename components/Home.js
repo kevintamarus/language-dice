@@ -11,7 +11,7 @@ export default class Home extends React.Component {
         style={{width: 100, height: 75}}/>
         <Text style={{fontSize: 30, fontWeight: 'bold', color: 'white', padding: 50}}>Language Dice</Text>
         <View>
-          <Text style={{padding: 25, fontSize: 20,}}>Select Your Language:</Text>
+          <Text style={{padding: 25, fontSize: 20, color: 'white'}}>Select Your Language:</Text>
           <Button
             raised
             backgroundColor="blue"
