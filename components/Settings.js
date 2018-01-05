@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   buttonAll: {
     padding: 10,
-    width: 200
+    width: 210
   },
   buttonLevel: {
     padding: 5,
