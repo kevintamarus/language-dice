@@ -99,31 +99,32 @@ export default class Main extends React.Component {
           onPress={this.handleTraversePress}
         />
         <TouchableOpacity onPress={this.toggleTranslation}>
-          <View>
-            <Card
-              containerStyle={{width: 300, height: 300}}
-              imageStyle={{width: 100, height: 100}}
-              imageWrapperStyle={{alignItems: 'center'}}
-              title={!this.state.showTranslation? `Question #${this.state.currentIndex + 1}` : `Question #${this.state.currentIndex + 1} Translated`}
-              image={require('../assets/question_mark.png')}>
-              { !this.state.showTranslation ? 
-                <Text style={{marginBottom: 10, fontSize: 30, fontWeight: 'bold'}}>
-                  {this.state.currentQuestion ? this.state.currentQuestion.question : null}
-                </Text> :
-                <Text style={{marginBottom: 10, fontSize: 30, fontWeight: 'bold'}}>
-                  {this.state.currentQuestion ? this.state.currentQuestion.translation : null}
-                </Text>
-              }
-            </Card>
-          </View>
+          <Card
+            containerStyle={{width: 300, height: 275}}
+            imageStyle={{width: 75, height: 75}}
+            imageWrapperStyle={{alignItems: 'center'}}
+            title={!this.state.showTranslation? `Question #${this.state.currentIndex + 1}` : `Question #${this.state.currentIndex + 1} Translated`}
+            image={require('../assets/question_mark.png')}>
+            { !this.state.showTranslation ? 
+              <Text style={{marginBottom: 10, fontSize: 30, fontWeight: 'bold'}}>
+                {this.state.currentQuestion ? this.state.currentQuestion.question : null}
+              </Text> :
+              <Text style={{marginBottom: 10, fontSize: 30, fontWeight: 'bold'}}>
+                {this.state.currentQuestion ? this.state.currentQuestion.translation : null}
+              </Text>
+            }
+          </Card>
         </TouchableOpacity>
-        <Button
-          raised
-          backgroundColor="green"
-          icon={{name: 'autorenew'}}
-          title='Generate Another Question'
-          onPress={this.randomQuestion}
-        />
+        <View style={{paddingTop: 10}}>
+          <Button
+            raised
+            backgroundColor="green"
+            borderRadius={10}
+            icon={{name: 'autorenew'}}
+            title='Generate Another Question'
+            onPress={this.randomQuestion}
+          />
+        </View>
         <View style={{paddingTop: 30}}>
           <Button
             raised
