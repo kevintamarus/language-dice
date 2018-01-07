@@ -146,6 +146,7 @@ export default class Main extends React.Component {
           previousQuestions={this.state.previousQuestions} 
           toggleModalHistory={this.toggleModalHistory}
           traverseQuestions={this.traverseQuestions}
+          currentIndex={this.state.currentIndex}
         />
       </View>
     )

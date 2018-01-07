@@ -24,6 +24,8 @@ export default class ModalHistory extends React.Component {
                 <ListItem
                   key={i}
                   title={(i + 1) + '  ' + question.question}
+                  underlayColor='blue'
+                  containerStyle={i === this.props.currentIndex ? {backgroundColor: 'yellow'} : {}}
                   onPress={() => {
                     this.props.traverseQuestions(i);
                     this.props.toggleModalHistory();
