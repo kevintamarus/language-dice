@@ -7,6 +7,9 @@ export default class Settings extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image source={require('../assets/background.jpeg')}
+          style={{flex: 1, position: 'absolute'}}
+        />
         <Text style={styles.text}>Select Your Difficulty:</Text>
         <View style={styles.buttonAll}>
           <Button
@@ -65,7 +68,7 @@ export default class Settings extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6495ED',
+    backgroundColor: 'rgba(52, 52, 52, 0.1)',
     alignItems: 'center',
     justifyContent: 'center',
   },
