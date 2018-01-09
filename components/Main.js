@@ -139,7 +139,7 @@ export default class Main extends React.Component {
         <View style={{paddingTop: 30}}>
           <Button
             raised
-            backgroundColor="blue"
+            backgroundColor="#6495ED"
             icon={{name: 'home'}}
             title='Back to Home'
             onPress={() => Actions.root()}
@@ -168,7 +168,8 @@ const styles = StyleSheet.create({
     width: 300, 
     height: 275,
     backgroundColor:'rgba(52, 52, 52, 0.1)'
-  },cardText: {
+  },
+  cardText: {
     marginBottom: 10,
     color: 'white',
     fontSize: 30, 
