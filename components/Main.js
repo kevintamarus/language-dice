@@ -7,6 +7,7 @@ import Intermediate from '../data/intermediate';
 import Advanced from '../data/advanced';
 import Randomizer from 'react-randomizer';
 import ModalHistory from './ModalHistory';
+import ModalHints from './ModalHints';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -19,7 +20,7 @@ export default class Main extends React.Component {
       currentIndex: 0,
       showTranslation: false,
       showModalHistory: false, 
-      showModalhints: false
+      showModalHints: false
     }
   }
 
@@ -137,7 +138,7 @@ export default class Main extends React.Component {
             onPress={this.randomQuestion}
           />
         </View>
-        <View style={{paddingTop: 30}}>
+        <View style={{paddingTop: 15}}>
           <Button
             raised
             backgroundColor="#6495ED"
@@ -173,7 +174,7 @@ const styles = StyleSheet.create({
   },
   card: {
     width: 300, 
-    height: 275,
+    height: 290,
     backgroundColor:'rgba(52, 52, 52, 0.1)'
   },
   cardText: {
