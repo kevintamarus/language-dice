@@ -79,5 +79,45 @@
     "translation": "What was the worst movie you have ever seen?",
     "translation_alt": null,
     "difficulty": "advanced"
+  },
+  {
+    "id": 11,
+    "question": "Avez-vous deja pris de la drogue?",
+    "question_alt": null,
+    "translation": "Have you ever used drugs?",
+    "translation_alt": null,
+    "difficulty": "advanced"
+  },
+  {
+    "id": 12,
+    "question": "As-tu une partenaire?",
+    "question_alt": null,
+    "translation": "Do you have a girlfriend or boyfriend?",
+    "translation_alt": null,
+    "difficulty": "advanced"
+  },
+  {
+    "id": 13,
+    "question": "Quelle est la pire chose que tu as achete?",
+    "question_alt": null,
+    "translation": "What is the worst thing you ever bought?",
+    "translation_alt": null,
+    "difficulty": "advanced"
+  },
+  {
+    "id": 14,
+    "question": "Etes-vous croyants??",
+    "question_alt": null,
+    "translation": "Are you religious?",
+    "translation_alt": null,
+    "difficulty": "advanced"
+  },
+  {
+    "id": 15,
+    "question": "As-tu de tatouages?",
+    "question_alt": null,
+    "translation": "Do you have any tattos?",
+    "translation_alt": null,
+    "difficulty": "advanced"
   }
 ]
