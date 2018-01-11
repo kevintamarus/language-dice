@@ -18,7 +18,8 @@ export default class Main extends React.Component {
       currentQuestion: null,
       currentIndex: 0,
       showTranslation: false,
-      showModalHistory: false
+      showModalHistory: false, 
+      showModalhints: false
     }
   }
 
@@ -67,7 +68,7 @@ export default class Main extends React.Component {
       this.traverseQuestions('previous');
     }
     if(buttonIndex === 1) {
-      this.toggleModalHistory();
+      this.toggleModal('History');
     }
     if(buttonIndex === 2 && currentIndex !== this.state.previousQuestions.length - 1) {
       this.traverseQuestions('next');
@@ -93,8 +94,8 @@ export default class Main extends React.Component {
     this.setState({showTranslation: !this.state.showTranslation});
   }
 
-  toggleModalHistory = () => {
-    this.setState({showModalHistory: !this.state.showModalHistory});
+  toggleModal = name => {
+    this.setState({['showModal' + name]: !this.state['showModal' + name]});
   }
 
   render() {
@@ -148,8 +149,14 @@ export default class Main extends React.Component {
         <ModalHistory 
           showModalHistory={this.state.showModalHistory}
           previousQuestions={this.state.previousQuestions} 
-          toggleModalHistory={this.toggleModalHistory}
+          toggleModal={this.toggleModal}
           traverseQuestions={this.traverseQuestions}
+          currentIndex={this.state.currentIndex}
+        />
+        <ModalHints 
+          showModalHints={this.state.showModalHints}
+          previousQuestions={this.state.previousQuestions} 
+          toggleModal={this.toggleModal}
           currentIndex={this.state.currentIndex}
         />
       </View>
