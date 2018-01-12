@@ -112,7 +112,7 @@ export default class Main extends React.Component {
         <ButtonGroup
           buttons={
             this.state.currentIndex === this.state.previousQuestions.length - 1 ? 
-            ['Previous', 'History', 'Generate Next'] : ['Previous', 'History', 'Next']
+            ['Previous', 'View History', 'Generate Next'] : ['Previous', 'View History', 'Next']
           }
           selectedBackgroundColor="blue"
           onPress={this.handleTraversePress}
