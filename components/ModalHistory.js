@@ -21,7 +21,7 @@ export default class ModalHistory extends React.Component {
             {this.props.previousQuestions && this.props.previousQuestions.map((question, i) => {
               return (
                 <ListItem
-                  key={i}
+                  key={question.id}
                   title={(i + 1) + '  ' + question.question}
                   subtitle={question.translation}
                   underlayColor='#6495ED'
