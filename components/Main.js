@@ -71,8 +71,12 @@ export default class Main extends React.Component {
     if(buttonIndex === 1) {
       this.toggleModal('History');
     }
-    if(buttonIndex === 2 && currentIndex !== this.state.previousQuestions.length - 1) {
-      this.traverseQuestions('next');
+    if(buttonIndex === 2) {
+      if(currentIndex !== this.state.previousQuestions.length - 1) {
+        this.traverseQuestions('next');
+      } else {
+        this.randomQuestion();
+      }
     }
   }
 
@@ -106,7 +110,10 @@ export default class Main extends React.Component {
           style={{flex: 1, position: 'absolute'}}
         />
         <ButtonGroup
-          buttons={['Previous', 'History', 'Next']}
+          buttons={
+            this.state.currentIndex === this.state.previousQuestions.length - 1 ? 
+            ['Previous', 'History', 'Generate Next'] : ['Previous', 'History', 'Next']
+          }
           selectedBackgroundColor="blue"
           onPress={this.handleTraversePress}
         />
