@@ -65,7 +65,7 @@ export default class Main extends React.Component {
     }
   }
 
-  handleTraversePress = buttonIndex => {
+  handleTraverse = buttonIndex => {
     const currentIndex = this.state.currentIndex;
     if(buttonIndex === 0 && currentIndex !== 0) {
       this.traverseQuestions('previous');
@@ -117,18 +117,16 @@ export default class Main extends React.Component {
             ['Previous', 'View History', 'Generate Next'] : ['Previous', 'View History', 'Next']
           }
           selectedBackgroundColor="blue"
-          onPress={this.handleTraversePress}
+          onPress={this.handleTraverse}
         />
-        <TouchableOpacity 
-          onPress={this.toggleTranslation}
-          onLongPress={() => this.toggleModal('Hints')}
-        >
-          <CardDisplay
-            currentIndex={this.state.currentIndex}
-            currentQuestion={this.state.currentQuestion}
-            showTranslation={this.state.showTranslation}
-          />
-        </TouchableOpacity>
+        <CardDisplay
+          currentIndex={this.state.currentIndex}
+          currentQuestion={this.state.currentQuestion}
+          showTranslation={this.state.showTranslation}
+          toggleTranslation={this.toggleTranslation}
+          toggleModal={this.toggleModal}
+          handleTraverse={this.handleTraverse}
+        />
         <View style={{paddingTop: 5}}>
           <Button
             raised
