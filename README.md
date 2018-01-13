@@ -15,6 +15,9 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 `react-native-elements`
 (https://react-native-training.github.io/react-native-elements/)
 
+`react-native-swipe-gestures`
+(https://www.npmjs.com/package/react-native-swipe-gestures)
+
 ![img_2427](https://user-images.githubusercontent.com/22313410/34804596-596d670a-f62e-11e7-8d44-281510db0438.PNG)
 ![img_2428](https://user-images.githubusercontent.com/22313410/34804598-5b32fab4-f62e-11e7-9684-55ead6618dc1.PNG)
 ![img_2429](https://user-images.githubusercontent.com/22313410/34804600-5de3752c-f62e-11e7-878b-86a683a09f95.PNG)
