@@ -1,11 +1,13 @@
 import React from 'react';
 import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
-import {Button, Card, ButtonGroup} from 'react-native-elements';
+import {Button, ButtonGroup} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 import Beginner from '../data/beginner';
 import Intermediate from '../data/intermediate';
 import Advanced from '../data/advanced';
 import Randomizer from 'react-randomizer';
+
+import CardDisplay from './CardDisplay';
 import ModalHistory from './ModalHistory';
 import ModalHints from './ModalHints';
 import ModalWebView from'./ModalWebView';
@@ -121,22 +123,11 @@ export default class Main extends React.Component {
           onPress={this.toggleTranslation}
           onLongPress={() => this.toggleModal('Hints')}
         >
-          <Card
-            containerStyle={styles.card}
-            title={!this.state.showTranslation ? `Question #${this.state.currentIndex + 1}` : `Question #${this.state.currentIndex + 1} Translated`}
-            titleStyle={{color: 'white', fontSize: 20}}
-            image={require('../assets/question-mark.png')}
-            imageStyle={{width: 75, height: 75}}
-            imageWrapperStyle={{alignItems: 'center'}}>
-            { !this.state.showTranslation ? 
-              <Text style={styles.cardText}>
-                {this.state.currentQuestion ? this.state.currentQuestion.question : null}
-              </Text> :
-              <Text style={styles.cardText}>
-                {this.state.currentQuestion ? this.state.currentQuestion.translation : null}
-              </Text>
-            }
-          </Card>
+          <CardDisplay
+            currentIndex={this.state.currentIndex}
+            currentQuestion={this.state.currentQuestion}
+            showTranslation={this.state.showTranslation}
+          />
         </TouchableOpacity>
         <View style={{paddingTop: 5}}>
           <Button
@@ -194,16 +185,5 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(52, 52, 52, 0.8)',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  card: {
-    width: 300, 
-    height: 290,
-    backgroundColor:'rgba(52, 52, 52, 0.1)'
-  },
-  cardText: {
-    marginBottom: 10,
-    color: 'white',
-    fontSize: 30, 
-    fontWeight: 'bold'
   }
 });
