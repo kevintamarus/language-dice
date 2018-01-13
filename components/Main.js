@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Image, Text, View} from 'react-native';
 import {Button, ButtonGroup} from 'react-native-elements';
 import {Actions} from 'react-native-router-flux';
 import Beginner from '../data/beginner';
 import Intermediate from '../data/intermediate';
 import Advanced from '../data/advanced';
 import Randomizer from 'react-randomizer';
-
+//Imported Components
 import CardDisplay from './CardDisplay';
 import ModalHistory from './ModalHistory';
 import ModalHints from './ModalHints';
@@ -120,7 +120,6 @@ export default class Main extends React.Component {
           onPress={this.handleTraverse}
         />
         <CardDisplay
-          onPress={this.toggleTranslation}
           currentIndex={this.state.currentIndex}
           currentQuestion={this.state.currentQuestion}
           showTranslation={this.state.showTranslation}

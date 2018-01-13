@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Image, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import {Card} from 'react-native-elements';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
@@ -10,19 +10,15 @@ export default class CardDisplay extends React.Component {
     switch (gestureName) {
       case SWIPE_UP:
         this.props.toggleModal('Hints');
-        console.log('swiped up');
         break;
       case SWIPE_DOWN:
         this.props.toggleTranslation();
-        console.log('swiped down');
         break;
       case SWIPE_LEFT:
         this.props.handleTraverse(2);
-        console.log('swiped left');
         break;
       case SWIPE_RIGHT:
         this.props.handleTraverse(0);
-        console.log('swiped right');
         break;
     }
   }
