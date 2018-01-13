@@ -120,6 +120,7 @@ export default class Main extends React.Component {
           onPress={this.handleTraverse}
         />
         <CardDisplay
+          onPress={this.toggleTranslation}
           currentIndex={this.state.currentIndex}
           currentQuestion={this.state.currentQuestion}
           showTranslation={this.state.showTranslation}
@@ -142,7 +143,7 @@ export default class Main extends React.Component {
             raised
             backgroundColor="orange"
             borderRadius={10}
-            title='Go to Google Translate'
+            title='Use Google Translate'
             onPress={() => this.toggleModal('WebView')}
           />
         </View>
